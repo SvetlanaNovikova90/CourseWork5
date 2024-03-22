@@ -23,3 +23,19 @@ class DBManager():
         Получает среднюю зарплату по вакансиям
         :return:
         """
+        pass
+
+    def get_vacancies_with_higher_salary(self):
+        """
+        Получает список всех вакансий, у которых зарплата выше средней по всем вакансиям
+        :return:
+        """
+        pass
+
+    def get_vacancies_with_keyword(self):
+        """
+        Получает список всех вакансий,
+        в названии которых содержатся переданные в метод слова, например python
+        :return:
+        """
+        pass
