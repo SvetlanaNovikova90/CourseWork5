@@ -42,7 +42,7 @@ class DBManager:
         """
         Получает среднюю зарплату по вакансиям.
         """
-        result = self.execute_query('''SELECT vacancies.name,
+        result = self.execute_query('''SELECT vacancies.name, 
          ABS(ROUND(AVG(salary_to-salary_from), 0)) AS avg_salary
          FROM vacancies GROUP BY vacancies.name ORDER BY avg_salary DESC'''
          )
@@ -63,7 +63,7 @@ class DBManager:
         """
         Получает список всех вакансий, в названии которых содержатся переданные в метод слова, например python.
         """
-        query = f"SELECT vacancies.name FROM vacancies WHERE vacancies.name LIKE '%{keyword}%' GROUP BY vacancies.name"
+        query = f"SELECT vacancies.name, vacancies.employer FROM vacancies WHERE vacancies.name LIKE '%{keyword}%' GROUP BY vacancies.name, vacancies.employer"
         result = self.execute_query(query)
         return result
 

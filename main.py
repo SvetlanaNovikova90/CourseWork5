@@ -9,7 +9,7 @@ def user_interaction():
 3 - Узнать среднюю зарплату
 4 - Список вакансий, у которых зарплата выше средней
 5 - Поискать по ключевому слову''')
-    all = DBManager("course_work5")
+    all = DBManager("course5")
 
     while True:
         user_input = input()
