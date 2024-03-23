@@ -7,13 +7,18 @@ class HHParser:
         '''
         Топ 10 компаний
         '''
-        params = {
-            'per_page': 10,
-            'sort_by': "by_vacancies_open"
-        }
-        response = requests.get('https://api.hh.ru/employers', params)
-        if response.status_code == 200:
-            return response.json()['items']
+        emploters = ['Тензор', 'AMS Software', 'Ярнет', 'Электроника ПСЦ', 'СИНТО', 'КРИСТА', 'Тинькофф', 'Mediascope', 'Aston', 'Арго студио']
+        emploters_now = []
+        for i in emploters:
+            params = {
+                'per_page': 1,
+                'sort_by': "by_vacancies_open",
+                'text': i
+            }
+            response = requests.get('https://api.hh.ru/employers', params)
+            if response.status_code == 200:
+                emploters_now.extend(response.json()['items'])
+        return emploters_now
 
     def get_employers(self):
         '''
