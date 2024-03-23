@@ -1,16 +1,14 @@
 from classes.DBManager import DBManager
-from utils.utils import create_database, create_table, insert_data_into_tables
 
 
-# employer = ['67611', '52510', '3177', '3529',
-#                 '154', '26877', '1949248', '27611',
-#                 '920774', '634253']
 def user_interaction():
-    print(" Привет!\n"
-          " Выберите команду:\n"
-          " 1 - Список всех компаний и количесво их вакансий\n 2 - Список всех вакансий с информацией по каждой\n 3 - "
-          "Узнать среднюю зарплату \n 4 - Списсок вакансий, у которых зарплата выше средней\n 5 - Поискать по ключевому "
-          "слову\n")
+    print('''Привет!
+Выберите команду:
+1 - Список всех компаний и количество их вакансий
+2 - Список всех вакансий с информацией по каждой
+3 - Узнать среднюю зарплату
+4 - Список вакансий, у которых зарплата выше средней
+5 - Поискать по ключевому слову''')
     all = DBManager("course_work5")
 
     while True:
@@ -49,9 +47,6 @@ def user_interaction():
 
 
 if __name__ == '__main__':
-    # create_database("course_work5")
-    # create_table("course_work5")
-    # insert_data_into_tables("course_work5")
     while True:
         user_interaction()
         user_choice = input("Продолжить? (да/нет): ")

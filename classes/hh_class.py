@@ -4,7 +4,9 @@ import requests
 class HHParser:
 
     def get_request(self):
-        """ Топ 10 компаний """
+        '''
+        Топ 10 компаний
+        '''
         params = {
             'per_page': 10,
             'sort_by': "by_vacancies_open"
@@ -14,6 +16,10 @@ class HHParser:
             return response.json()['items']
 
     def get_employers(self):
+        '''
+        Список компаний. Ключи: id и name
+        :return:
+        '''
         data = self.get_request()
         employers = []
         for employer in data:
@@ -21,6 +27,11 @@ class HHParser:
         return employers
 
     def get_vacancies_from_company(self, id):
+        '''
+        Получение вакансий по id выбранных компаний
+        :param id: id компании
+        :return:
+        '''
         params = {
             'per_page': 20,
             'employer_id': id
@@ -30,6 +41,10 @@ class HHParser:
             return response.json()['items']
 
     def get_all_vacancies(self):
+        '''
+
+        :return:
+        '''
         employers = self.get_employers()
         vacancies = []
         for employer in employers:
