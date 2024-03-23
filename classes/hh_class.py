@@ -5,7 +5,7 @@ class HHParser:
 
     def get_request(self):
         '''
-        Топ 10 компаний
+        10 интресующих компаний
         '''
         emploters = ['Тензор', 'AMS Software', 'Ярнет', 'Электроника ПСЦ', 'СИНТО', 'КРИСТА', 'Тинькофф', 'Mediascope', 'Aston', 'Арго студио']
         emploters_now = []

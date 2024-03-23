@@ -66,8 +66,3 @@ class DBManager:
         query = f"SELECT vacancies.name, vacancies.employer FROM vacancies WHERE vacancies.name LIKE '%{keyword}%' GROUP BY vacancies.name, vacancies.employer"
         result = self.execute_query(query)
         return result
-
-
-
-#db = DBManager("course_work5")
-#print(db.get_all_vacancies())
