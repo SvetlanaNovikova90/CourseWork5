@@ -4,30 +4,30 @@ import requests
 class HHParser:
 
     def get_request(self):
+        """ Топ 10 компаний """
         params = {
-            "per_page": 10,
-            "sort_by": "by_vacancies_open"
+            'per_page': 10,
+            'sort_by': "by_vacancies_open"
         }
-        response = requests.get("http://api.hh.ru/employers/", params)
+        response = requests.get('https://api.hh.ru/employers', params)
         if response.status_code == 200:
-            return response.json()["items"]
-
+            return response.json()['items']
 
     def get_employers(self):
         data = self.get_request()
         employers = []
         for employer in data:
-            employers.append({"id": employer["id"], "name":employer["name"]})
+            employers.append({"id": employer["id"], "name": employer["name"]})
         return employers
 
     def get_vacancies_from_company(self, id):
         params = {
-            "per_page": 20,
-            "employer_id":id
+            'per_page': 20,
+            'employer_id': id
         }
-        response = requests.get("http://api.hh.ru/vacancies/", params)
+        response = requests.get('https://api.hh.ru/vacancies/', params)
         if response.status_code == 200:
-            return response.json()["items"]
+            return response.json()['items']
 
     def get_all_vacancies(self):
         employers = self.get_employers()
@@ -35,7 +35,6 @@ class HHParser:
         for employer in employers:
             vacancies.extend(self.get_vacancies_from_company(employer["id"]))
         return vacancies
-
 
     def filter_vacancies(self):
         vacancies = self.get_all_vacancies()
@@ -53,9 +52,12 @@ class HHParser:
                 "salary_from": salary_from,
                 "salary_to": salary_to,
                 "url": vacancy["alternate_url"],
-                "employer": vacancy["employer"]["id"],
+                "area": vacancy["area"]["name"],
+                "employer": vacancy["employer"]["id"]
             })
         return filter_data
 
-hh = HHParser()
-print(hh.filter_vacancies())
+
+vv = HHParser()
+for i in vv.filter_vacancies():
+    print()
