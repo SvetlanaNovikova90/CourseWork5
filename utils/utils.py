@@ -1,7 +1,7 @@
 import psycopg2
 
 from classes.hh_class import HHParser
-from config import config
+from utils.config import config
 
 
 def create_database(db_name):
@@ -69,6 +69,7 @@ def insert_data_into_tables(db_name):
     conn.close()
 
 
-create_database("course5")
-create_table("course5")
-insert_data_into_tables("course5")
+def working_with_databases():
+    create_database("course5")
+    create_table("course5")
+    insert_data_into_tables("course5")

@@ -1,4 +1,5 @@
 from classes.DBManager import DBManager
+from utils.utils import working_with_databases
 
 
 def user_interaction():
@@ -47,6 +48,7 @@ def user_interaction():
 
 
 if __name__ == '__main__':
+    working_with_databases()
     while True:
         user_interaction()
         user_choice = input("Продолжить? (да/нет): ")
